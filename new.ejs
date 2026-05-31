@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>New Chat</title>
+  <link href="https://fonts.googleapis.com/css2?family=Segoe+UI:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: #111b21;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1rem;
+      font-family: 'Segoe UI', sans-serif;
+    }
+    .card {
+      background: #202c33;
+      border-radius: 12px;
+      width: 100%;
+      max-width: 420px;
+      overflow: hidden;
+    }
+    .header {
+      padding: 1.2rem;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      border-bottom: 1px solid #2a3942;
+    }
+    .avatar {
+      width: 42px; height: 42px;
+      border-radius: 50%;
+      background: #00a884;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 20px; color: #111b21; flex-shrink: 0;
+    }
+    .header h2 { font-size: 15px; font-weight: 600; color: #e9edef; }
+    .header p  { font-size: 12px; color: #8696a0; }
+    .body { padding: 1rem; display: flex; flex-direction: column; gap: 12px; }
+    .row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .field label {
+      display: block; font-size: 11px;
+      color: #00a884; margin-bottom: 4px; letter-spacing: 0.03em;
+    }
+    .field input {
+      width: 100%; background: transparent;
+      border: none; border-bottom: 1.5px solid #2a3942;
+      color: #e9edef; font-size: 15px;
+      padding: 6px 0 8px; outline: none;
+      font-family: inherit; transition: border-color 0.2s;
+    }
+    .field input:focus { border-color: #00a884; }
+    .field input::placeholder { color: #8696a0; }
+    .msg-area {
+      background: #111b21;
+      border-radius: 10px;
+      padding: 10px 12px;
+      position: relative;
+    }
+    .msg-area textarea {
+      width: 100%; background: transparent; border: none;
+      color: #e9edef; font-size: 14px;
+      font-family: inherit; resize: none;
+      outline: none; min-height: 100px; line-height: 1.5;
+    }
+    .msg-area textarea::placeholder { color: #8696a0; }
+    .emoji { position: absolute; right: 10px; bottom: 10px; font-size: 20px; }
+    .footer {
+      padding: 0.8rem 1rem 1rem;
+      display: flex; align-items: center; gap: 10px;
+      border-top: 1px solid #2a3942;
+    }
+    .icon-btn {
+      background: transparent; border: none;
+      color: #8696a0; font-size: 22px;
+      cursor: pointer; padding: 4px;
+    }
+    .send-btn {
+      margin-left: auto;
+      width: 46px; height: 46px;
+      border-radius: 50%;
+      background: #00a884; border: none;
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer; transition: background 0.2s;
+    }
+    .send-btn:hover { background: #00c49a; }
+    .send-btn svg { width: 22px; height: 22px; fill: #fff; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <div class="header">
+      <div class="avatar">💬</div>
+      <div>
+        <h2>New chat</h2>
+        <p>Send a message</p>
+      </div>
+    </div>
+    <form action="/chats" method="POST">
+      <div class="body">
+        <div class="row">
+          <div class="field">
+            <label>FROM</label>
+            <input type="text" name="from" placeholder="Your name" required>
+          </div>
+          <div class="field">
+            <label>TO</label>
+            <input type="text" name="to" placeholder="Recipient" required>
+          </div>
+        </div>
+        <div class="msg-area">
+          <textarea name="msg" placeholder="Type a message" required></textarea>
+          <span class="emoji">😊</span>
+        </div>
+      </div>
+      <div class="footer">
+        <button type="button" class="icon-btn">📎</button>
+        <button type="button" class="icon-btn">📷</button>
+        <button type="button" class="icon-btn">🎤</button>
+        <button type="submit" class="send-btn">
+          <svg viewBox="0 0 24 24"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg>
+        </button>
+      </div>
+    </form>
+  </div>
+</body>
+</html>
